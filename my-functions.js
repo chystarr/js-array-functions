@@ -78,3 +78,11 @@ addTwo = function(num) {
 console.log(arr);
 let arr2 = arr.myMap(addTwo);
 console.log(arr2);
+
+let nums = [10, 12, 14, 16];
+comparison = function(num) {
+  return num > 13;
+};
+console.log(nums);
+let nums2 = nums.myMap(comparison);
+console.log(nums2);
