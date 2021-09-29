@@ -6,8 +6,12 @@ Array.prototype.myEach = function(callBackFn) {
 };
 
 // MAP //
-Array.prototype.myMap = function() {
-
+Array.prototype.myMap = function(callBackFn) {
+    let new_array = [];
+    for (i = 0; i < this.length; i++) {
+        new_array.push(callBackFn(this[i]));
+    }
+    return new_array;
 };
 
 // FILTER //
@@ -61,10 +65,10 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-arr = [1, 2, 3];
+let arr = [1, 2, 3];
 addTwo = function(num) {
     return num + 2;
 };
 console.log(arr);
-arr.myEach(addTwo);
-console.log(arr);
+let arr2 = arr.myMap(addTwo);
+console.log(arr2);
