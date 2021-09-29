@@ -26,8 +26,13 @@ Array.prototype.myFilter = function(callBackFn) {
 };
 
 // SOME //
-Array.prototype.mySome = function() {
-
+Array.prototype.mySome = function(callBackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (callBackFn(this[i])) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // EVERY //
@@ -71,18 +76,11 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-let arr = [1, 2, 3];
-addTwo = function(num) {
-  return num + 2;
-};
-console.log(arr);
-let arr2 = arr.myMap(addTwo);
-console.log(arr2);
-
 let nums = [10, 12, 14, 16];
 comparison = function(num) {
-  return num > 13;
+  return num > 15;
 };
 console.log(nums);
-let nums2 = nums.myFilter(comparison);
-console.log(nums2);
+console.log(nums.mySome(comparison));
+console.log(nums.mySome(x => x < 10));
+console.log(nums.mySome(x => x < 15));
