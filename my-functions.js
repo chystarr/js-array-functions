@@ -1,6 +1,6 @@
 // FOR EACH //
 Array.prototype.myEach = function(callBackFn) {
-  for (i = 0; i < this.length; i++) {
+  for (let i = 0; i < this.length; i++) {
     this[i] = callBackFn(this[i]);
   }
 };
@@ -8,15 +8,21 @@ Array.prototype.myEach = function(callBackFn) {
 // MAP //
 Array.prototype.myMap = function(callBackFn) {
   let new_array = [];
-  for (i = 0; i < this.length; i++) {
+  for (let i = 0; i < this.length; i++) {
     new_array.push(callBackFn(this[i]));
   }
   return new_array;
 };
 
 // FILTER //
-Array.prototype.myFilter = function() {
-  
+Array.prototype.myFilter = function(callBackFn) {
+  let new_array = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callBackFn(this[i])) {
+      new_array.push(this[i]);
+    }
+  }
+  return new_array;
 };
 
 // SOME //
@@ -72,3 +78,11 @@ addTwo = function(num) {
 console.log(arr);
 let arr2 = arr.myMap(addTwo);
 console.log(arr2);
+
+let nums = [10, 12, 14, 16];
+comparison = function(num) {
+  return num > 13;
+};
+console.log(nums);
+let nums2 = nums.myFilter(comparison);
+console.log(nums2);
