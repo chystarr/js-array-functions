@@ -1,6 +1,8 @@
 // FOR EACH //
-Array.prototype.myEach = function() {
-
+Array.prototype.myEach = function(callBackFn) {
+    for (i = 0; i < this.length; i++) {
+        this[i] = callBackFn(this[i]);
+    }
 };
 
 // MAP //
