@@ -36,8 +36,13 @@ Array.prototype.mySome = function(callBackFn) {
 };
 
 // EVERY //
-Array.prototype.myEvery = function() {
-
+Array.prototype.myEvery = function(callBackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (!callBackFn(this[i])) {
+      return false;
+    }
+  }
+  return true;
 };
 
 // REDUCE //
