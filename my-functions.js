@@ -36,8 +36,13 @@ Array.prototype.mySome = function(callBackFn) {
 };
 
 // EVERY //
-Array.prototype.myEvery = function() {
-
+Array.prototype.myEvery = function(callBackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (!callBackFn(this[i])) {
+      return false;
+    }
+  }
+  return true;
 };
 
 // REDUCE //
@@ -81,6 +86,8 @@ comparison = function(num) {
   return num > 15;
 };
 console.log(nums);
-console.log(nums.mySome(comparison));
-console.log(nums.mySome(x => x < 10));
-console.log(nums.mySome(x => x < 15));
+console.log(nums.myEvery(comparison));
+console.log(nums.myEvery(x => x > 10));
+console.log(nums.myEvery(x => x < 20));
+console.log(nums.myEvery(x => x > 5));
+console.log(nums.myEvery(x => x >= 10));
