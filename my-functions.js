@@ -86,6 +86,8 @@ comparison = function(num) {
   return num > 15;
 };
 console.log(nums);
-console.log(nums.mySome(comparison));
-console.log(nums.mySome(x => x < 10));
-console.log(nums.mySome(x => x < 15));
+console.log(nums.myEvery(comparison));
+console.log(nums.myEvery(x => x > 10));
+console.log(nums.myEvery(x => x < 20));
+console.log(nums.myEvery(x => x > 5));
+console.log(nums.myEvery(x => x >= 10));
