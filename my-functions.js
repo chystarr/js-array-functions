@@ -1,6 +1,8 @@
 // FOR EACH //
-Array.prototype.myEach = function() {
-
+Array.prototype.myEach = function(callBackFn) {
+    for (i = 0; i < this.length; i++) {
+        this[i] = callBackFn(this[i]);
+    }
 };
 
 // MAP //
@@ -57,3 +59,12 @@ Object.grabKeys = function() {
 Object.grabValues = function() {
 
 };
+
+// code for testing functions
+arr = [1, 2, 3];
+addTwo = function(num) {
+    return num + 2;
+};
+console.log(arr);
+arr.myEach(addTwo);
+console.log(arr);
