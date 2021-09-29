@@ -7,7 +7,11 @@ Array.prototype.myEach = function(callBackFn) {
 
 // MAP //
 Array.prototype.myMap = function() {
-
+    let new_array = [];
+    for (i = 0; i < this.length; i++) {
+        new_array.push(callBackFn(this[i]));
+    }
+    return new_array;
 };
 
 // FILTER //
