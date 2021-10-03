@@ -76,8 +76,13 @@ Array.prototype.myPush = function() {
 };
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function() {
-
+Array.prototype.myLastIndexOf = function(searchElement) {
+  for (let i = this.length - 1; i > -1; i--) {
+    if (this[i] === searchElement) {
+      return i;
+    }
+  }
+  return -1;
 };
 
 // KEYS //
@@ -92,7 +97,7 @@ Object.grabValues = function() {
 
 // code for testing functions
 const a = [1, 2, 3, 1];
-console.log(a.myIndexOf(4));
-console.log(a.myIndexOf(2));
-console.log(a.myIndexOf("2"));
-console.log(a.myIndexOf(1));
+console.log(a.myLastIndexOf(4));
+console.log(a.myLastIndexOf(2));
+console.log(a.myLastIndexOf("2"));
+console.log(a.myLastIndexOf(1));
