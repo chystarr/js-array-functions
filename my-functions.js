@@ -53,7 +53,7 @@ Array.prototype.myReduce = function() {
 // INCLUDES //
 Array.prototype.myIncludes = function(searchElement) {
   for (let i = 0; i < this.length; i++) {
-    if (this[i] = searchElement) {
+    if (this[i] === searchElement) {
       return true;
     }
   }
@@ -86,13 +86,12 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-let nums = [10, 12, 14, 16];
-comparison = function(num) {
-  return num > 15;
-};
-console.log(nums);
-console.log(nums.myEvery(comparison));
-console.log(nums.myEvery(x => x > 10));
-console.log(nums.myEvery(x => x < 20));
-console.log(nums.myEvery(x => x > 5));
-console.log(nums.myEvery(x => x >= 10));
+const nums = [1, 2, 3, 4];
+const words = ["hello", "world", "chair"];
+console.log(nums.myIncludes(4));
+console.log(nums.myIncludes(5));
+console.log(nums.myIncludes("hello"));
+console.log(nums.myIncludes("4"));
+console.log(words.myIncludes("hello"));
+console.log(words.myIncludes("plant"));
+console.log(words.myIncludes(4));
