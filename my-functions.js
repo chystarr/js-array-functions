@@ -91,12 +91,8 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const nums = [1, 2, 3, 4];
-const words = ["hello", "world", "chair"];
-console.log(nums.myIncludes(4));
-console.log(nums.myIncludes(5));
-console.log(nums.myIncludes("hello"));
-console.log(nums.myIncludes("4"));
-console.log(words.myIncludes("hello"));
-console.log(words.myIncludes("plant"));
-console.log(words.myIncludes(4));
+const a = [1, 2, 3, 1];
+console.log(a.myIndexOf(4));
+console.log(a.myIndexOf(2));
+console.log(a.myIndexOf("2"));
+console.log(a.myIndexOf(1));
