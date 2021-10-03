@@ -61,8 +61,13 @@ Array.prototype.myIncludes = function(searchElement) {
 };
 
 // INDEXOF //
-Array.prototype.myIndexOf = function() {
-
+Array.prototype.myIndexOf = function(searchElement) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === searchElement) {
+      return i;
+    }
+  }
+  return -1;
 };
 
 // PUSH //
@@ -86,12 +91,8 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const nums = [1, 2, 3, 4];
-const words = ["hello", "world", "chair"];
-console.log(nums.myIncludes(4));
-console.log(nums.myIncludes(5));
-console.log(nums.myIncludes("hello"));
-console.log(nums.myIncludes("4"));
-console.log(words.myIncludes("hello"));
-console.log(words.myIncludes("plant"));
-console.log(words.myIncludes(4));
+const a = [1, 2, 3, 1];
+console.log(a.myIndexOf(4));
+console.log(a.myIndexOf(2));
+console.log(a.myIndexOf("2"));
+console.log(a.myIndexOf(1));
