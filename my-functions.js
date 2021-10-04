@@ -1,8 +1,8 @@
 // FOR EACH //
-Array.prototype.myEach = function(callBackFn) {
+Array.prototype.myEach = function(callbackFn) {
   for (let i = 0; i < this.length; i++) {
     if (this[i] === undefined) continue;
-    callBackFn(this[i], i, this);
+    callbackFn(this[i], i, this);
   }
 };
 
@@ -98,7 +98,8 @@ Object.grabValues = function() {
 
 // code for testing functions
 const a = [1, 2, 3, 1];
-console.log(a.myLastIndexOf(4));
-console.log(a.myLastIndexOf(2));
-console.log(a.myLastIndexOf("2"));
-console.log(a.myLastIndexOf(1));
+a.forEach(x => console.log(x));
+a.myEach(x => console.log(x));
+const isEven = num => console.log(num % 2 === 0);
+a.forEach(isEven);
+a.myEach(isEven);
