@@ -1,24 +1,27 @@
 // FOR EACH //
-Array.prototype.myEach = function(callBackFn) {
+Array.prototype.myEach = function(callbackFn) {
   for (let i = 0; i < this.length; i++) {
-    this[i] = callBackFn(this[i]);
+    if (this[i] === undefined) continue;
+    callbackFn(this[i], i, this);
   }
 };
 
 // MAP //
-Array.prototype.myMap = function(callBackFn) {
+Array.prototype.myMap = function(callbackFn) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
-    new_array.push(callBackFn(this[i]));
+    if (this[i] === undefined) continue;
+    new_array.push(callbackFn(this[i], i, this));
   }
   return new_array;
 };
 
 // FILTER //
-Array.prototype.myFilter = function(callBackFn) {
+Array.prototype.myFilter = function(callbackFn) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
-    if (callBackFn(this[i])) {
+    if (this[i] === undefined) continue;
+    if (callbackFn(this[i], i, this)) {
       new_array.push(this[i]);
     }
   }
@@ -26,9 +29,10 @@ Array.prototype.myFilter = function(callBackFn) {
 };
 
 // SOME //
-Array.prototype.mySome = function(callBackFn) {
+Array.prototype.mySome = function(callbackFn) {
   for (let i = 0; i < this.length; i++) {
-    if (callBackFn(this[i])) {
+    if (this[i] === undefined) continue;
+    if (callbackFn(this[i], i, this)) {
       return true;
     }
   }
@@ -36,9 +40,10 @@ Array.prototype.mySome = function(callBackFn) {
 };
 
 // EVERY //
-Array.prototype.myEvery = function(callBackFn) {
+Array.prototype.myEvery = function(callbackFn) {
   for (let i = 0; i < this.length; i++) {
-    if (!callBackFn(this[i])) {
+    if (this[i] === undefined) continue;
+    if (!callbackFn(this[i], i, this)) {
       return false;
     }
   }
@@ -53,6 +58,7 @@ Array.prototype.myReduce = function() {
 // INCLUDES //
 Array.prototype.myIncludes = function(searchElement) {
   for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
     if (this[i] === searchElement) {
       return true;
     }
@@ -63,6 +69,7 @@ Array.prototype.myIncludes = function(searchElement) {
 // INDEXOF //
 Array.prototype.myIndexOf = function(searchElement) {
   for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
     if (this[i] === searchElement) {
       return i;
     }
@@ -78,6 +85,7 @@ Array.prototype.myPush = function() {
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function(searchElement) {
   for (let i = this.length - 1; i > -1; i--) {
+    if (this[i] === undefined) continue;
     if (this[i] === searchElement) {
       return i;
     }
@@ -96,8 +104,18 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const a = [1, 2, 3, 1];
-console.log(a.myLastIndexOf(4));
-console.log(a.myLastIndexOf(2));
-console.log(a.myLastIndexOf("2"));
-console.log(a.myLastIndexOf(1));
+const arr = [1, 2, 3, 4, 5, 5];
+const isEven = num => (num % 2 === 0);
+console.log(arr.every(isEven));
+console.log(arr.myEvery(isEven));
+/*
+const greaterThan6 = num => (num > 6);
+console.log(arr.some(greaterThan6));
+console.log(arr.mySome(greaterThan6));
+const f = (x,i) => ((x + i) % 2 === 0);
+console.log(arr.some(f));
+console.log(arr.mySome(f));
+*/
+const lessThan7 = num => (num < 7);
+console.log(arr.every(lessThan7));
+console.log(arr.myEvery(lessThan7));
