@@ -112,7 +112,12 @@ Object.grabKeys = function(obj) {
 
 // VALUES //
 Object.grabValues = function() {
-
+  let values = [];
+  for (let i of obj) {
+    if (obj[i] === undefined) continue;
+    values.push(i);
+  }
+  return values;
 };
 
 // code for testing functions
