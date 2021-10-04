@@ -29,9 +29,10 @@ Array.prototype.myFilter = function(callbackFn) {
 };
 
 // SOME //
-Array.prototype.mySome = function(callBackFn) {
+Array.prototype.mySome = function(callbackFn) {
   for (let i = 0; i < this.length; i++) {
-    if (callBackFn(this[i])) {
+    if (this[i] === undefined) continue;
+    if (callbackFn(this[i], i, this)) {
       return true;
     }
   }
@@ -99,10 +100,13 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5, 5];
 const isEven = num => (num % 2 === 0);
-console.log(arr.filter(isEven));
-console.log(arr.myFilter(isEven));
-const greaterThan2 = num => (num > 2);
-console.log(arr.filter(greaterThan2));
-console.log(arr.myFilter(greaterThan2));
+console.log(arr.some(isEven));
+console.log(arr.mySome(isEven));
+const greaterThan6 = num => (num > 6);
+console.log(arr.some(greaterThan6));
+console.log(arr.mySome(greaterThan6));
+const f = (x,i) => ((x + i) % 2 === 0);
+console.log(arr.some(f));
+console.log(arr.mySome(f));
