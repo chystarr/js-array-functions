@@ -52,8 +52,8 @@ Array.prototype.myEvery = function(callbackFn) {
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
-  let result = null;
-  for (let i = 0; i < this.length; i++) {
+  let result = this[0];
+  for (let i = 1; i < this.length; i++) {
     if (this[i] === undefined) continue;
     result = callbackFn(result, this[i]);
   }
@@ -130,3 +130,6 @@ const arr = [1, 2, 3, 4];
 const reducer = (a, b) => a + b;
 console.log(arr.reduce(reducer));
 console.log(arr.myReduce(reducer));
+const arr2 = ["Hey ", "hello ", "etcetera"];
+console.log(arr2.reduce(reducer));
+console.log(arr2.myReduce(reducer));
