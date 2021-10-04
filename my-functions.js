@@ -52,11 +52,11 @@ Array.prototype.myEvery = function(callbackFn) {
 
 // REDUCE //
 Array.prototype.myReduce = function(callbackFn) {
-  let result = this[0];
+  let result = null;
   for (let i = 0; i < this.length; i++) {
-    if (i === 0) continue;
     if (this[i] === undefined) continue;
-    callbackFn(this[i], i, this);
+    // if (i === this.length - 1) break;
+    result = callbackFn(result, this[i]);
   }
   return result;
 };
@@ -127,11 +127,7 @@ Object.grabValues = function(obj) {
 };
 
 // code for testing functions
-const obj1 = {
-  a: "stuff",
-  b: 12,
-  c: true,
-};
-
-console.log(Object.values(obj1));
-console.log(Object.grabValues(obj1));
+const arr = [1, 2, 3, 4];
+const reducer = (a, b) => a + b;
+console.log(arr.reduce(reducer));
+console.log(arr.myReduce(reducer));
