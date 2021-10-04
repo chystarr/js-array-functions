@@ -85,6 +85,7 @@ Array.prototype.myPush = function() {
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function(searchElement) {
   for (let i = this.length - 1; i > -1; i--) {
+    if (this[i] === undefined) continue;
     if (this[i] === searchElement) {
       return i;
     }
