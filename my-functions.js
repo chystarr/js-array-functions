@@ -101,8 +101,13 @@ Array.prototype.myLastIndexOf = function(searchElement) {
 };
 
 // KEYS //
-Object.grabKeys = function() {
-
+Object.grabKeys = function(obj) {
+  let keys = [];
+  for (let i in obj) {
+    if (obj[i] === undefined) continue;
+    keys.push(i);
+  }
+  return keys;
 };
 
 // VALUES //
@@ -111,6 +116,11 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const arr = [1, 2, 3];
-arr.push(4, 5, 6);
-console.log(arr);
+const obj1 = {
+  a: "stuff",
+  b: 12,
+  c: true,
+};
+
+console.log(Object.keys(obj1));
+console.log(Object.grabKeys(obj1));
