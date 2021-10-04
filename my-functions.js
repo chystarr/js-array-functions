@@ -7,10 +7,11 @@ Array.prototype.myEach = function(callbackFn) {
 };
 
 // MAP //
-Array.prototype.myMap = function(callBackFn) {
+Array.prototype.myMap = function(callbackFn) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
-    new_array.push(callBackFn(this[i]));
+    if (this[i] === undefined) continue;
+    new_array.push(callbackFn(this[i], i, this));
   }
   return new_array;
 };
@@ -97,9 +98,6 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const a = [1, 2, 3, 1];
-a.forEach(x => console.log(x));
-a.myEach(x => console.log(x));
-const isEven = num => console.log(num % 2 === 0);
-a.forEach(isEven);
-a.myEach(isEven);
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.map((x,i) => x + i));
+console.log(arr.myMap((x,i) => x + i));
