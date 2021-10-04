@@ -101,8 +101,13 @@ Array.prototype.myLastIndexOf = function(searchElement) {
 };
 
 // KEYS //
-Object.grabKeys = function() {
-
+Object.grabKeys = function(obj) {
+  let keys = [];
+  for (let i in obj) {
+    if (this[i] === undefined) continue;
+    keys.push[i];
+  }
+  return keys;
 };
 
 // VALUES //
