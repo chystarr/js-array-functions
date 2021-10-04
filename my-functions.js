@@ -58,6 +58,7 @@ Array.prototype.myReduce = function() {
 // INCLUDES //
 Array.prototype.myIncludes = function(searchElement) {
   for (let i = 0; i < this.length; i++) {
+    if (this[i] === undefined) continue;
     if (this[i] === searchElement) {
       return true;
     }
