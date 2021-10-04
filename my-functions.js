@@ -111,18 +111,6 @@ Object.grabValues = function() {
 };
 
 // code for testing functions
-const arr = [1, 2, 3, 4, 5, 5];
-const isEven = num => (num % 2 === 0);
-console.log(arr.every(isEven));
-console.log(arr.myEvery(isEven));
-/*
-const greaterThan6 = num => (num > 6);
-console.log(arr.some(greaterThan6));
-console.log(arr.mySome(greaterThan6));
-const f = (x,i) => ((x + i) % 2 === 0);
-console.log(arr.some(f));
-console.log(arr.mySome(f));
-*/
-const lessThan7 = num => (num < 7);
-console.log(arr.every(lessThan7));
-console.log(arr.myEvery(lessThan7));
+const arr = [1, 2, 3];
+arr.push(4, 5, 6);
+console.log(arr);
