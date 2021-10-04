@@ -1,7 +1,8 @@
 // FOR EACH //
 Array.prototype.myEach = function(callBackFn) {
   for (let i = 0; i < this.length; i++) {
-    this[i] = callBackFn(this[i]);
+    if (this[i] === undefined) continue;
+    callBackFn(this[i], i, this);
   }
 };
 
