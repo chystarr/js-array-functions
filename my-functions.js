@@ -17,10 +17,11 @@ Array.prototype.myMap = function(callbackFn) {
 };
 
 // FILTER //
-Array.prototype.myFilter = function(callBackFn) {
+Array.prototype.myFilter = function(callbackFn) {
   let new_array = [];
   for (let i = 0; i < this.length; i++) {
-    if (callBackFn(this[i])) {
+    if (this[i] === undefined) continue;
+    if (callbackFn(this[i], i, this)) {
       new_array.push(this[i]);
     }
   }
@@ -99,5 +100,9 @@ Object.grabValues = function() {
 
 // code for testing functions
 const arr = [1, 2, 3, 4, 5];
-console.log(arr.map((x,i) => x + i));
-console.log(arr.myMap((x,i) => x + i));
+const isEven = num => (num % 2 === 0);
+console.log(arr.filter(isEven));
+console.log(arr.myFilter(isEven));
+const greaterThan2 = num => (num > 2);
+console.log(arr.filter(greaterThan2));
+console.log(arr.myFilter(greaterThan2));
